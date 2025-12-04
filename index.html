@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRB Amoblamientos - Tienda Online</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <!-- Barra de navegacion -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>SRB Amoblamientos</h1>
+            </div>
+            <ul class="menu">
+                <li><a href="#" onclick="mostrarSeccion('inicio')">Inicio</a></li>
+                <li><a href="#" onclick="mostrarSeccion('productos')">Productos</a></li>
+                <li><a href="#" onclick="mostrarSeccion('contacto')">Contacto</a></li>
+            </ul>
+            <div class="carrito-icono" onclick="abrirCarrito()">
+                <span>Carrito</span>
+                <span class="contador" id="contadorCarrito">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seccion de inicio -->
+    <section id="inicio" class="seccion activa">
+        <div class="hero">
+            <h2>Muebles de calidad para tu hogar</h2>
+            <p>Encuentra los mejores muebles al mejor precio</p>
+            <button onclick="mostrarSeccion('productos')">Ver productos</button>
+        </div>
+
+        <div class="caracteristicas">
+            <div class="caracteristica">
+                <h3>Envio gratis</h3>
+                <p>En compras mayores a $50.000</p>
+            </div>
+            <div class="caracteristica">
+                <h3>Garantia</h3>
+                <p>2 años de garantia en todos nuestros productos</p>
+            </div>
+            <div class="caracteristica">
+                <h3>Calidad</h3>
+                <p>Materiales de primera calidad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccion de productos -->
+    <section id="productos" class="seccion">
+        <h2>Nuestros Productos</h2>
+        
+        <div class="filtros">
+            <button class="filtro-btn activo" onclick="filtrarProductos('todos')">Todos</button>
+            <button class="filtro-btn" onclick="filtrarProductos('living')">Living</button>
+            <button class="filtro-btn" onclick="filtrarProductos('comedor')">Comedor</button>
+            <button class="filtro-btn" onclick="filtrarProductos('dormitorio')">Dormitorio</button>
+            <button class="filtro-btn" onclick="filtrarProductos('oficina')">Oficina</button>
+        </div>
+
+        <div class="productos-grid" id="productosGrid">
+            <!-- Los productos se cargan con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Seccion de contacto -->
+    <section id="contacto" class="seccion">
+        <h2>Contacto</h2>
+        <div class="contacto-container">
+            <div class="info-contacto">
+                <h3>Informacion</h3>
+                <p><strong>Direccion:</strong> Av. Corrientes 1234, CABA</p>
+                <p><strong>Telefono:</strong> +54 11 4567-8900</p>
+                <p><strong>Email:</strong> ventas@srbamoblamientos.com</p>
+                <p><strong>Horario:</strong> Lunes a Viernes 9:00 - 18:00</p>
+            </div>
+            <div class="formulario-contacto">
+                <h3>Envianos un mensaje</h3>
+                <input type="text" id="nombre" placeholder="Tu nombre">
+                <input type="email" id="email" placeholder="Tu email">
+                <textarea id="mensaje" placeholder="Tu mensaje" rows="5"></textarea>
+                <button onclick="enviarMensaje()">Enviar</button>
+            </div>
+            <div class="formulario-login">
+                <h3>Iniciar Sesion</h3>
+                <input type="email" id="loginEmail" placeholder="Email">
+                <input type="password" id="loginPassword" placeholder="Contraseña">
+                <button onclick="iniciarSesion()">Entrar</button>
+                <p class="login-texto">¿No tienes cuenta? <a href="#" onclick="alert('Registrate en nuestra tienda')">Registrate aqui</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de detalle de producto -->
+    <div id="modalProducto" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <div id="detalleProducto">
+                <!-- El detalle se carga con JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar del carrito -->
+    <div id="carritoSidebar" class="carrito-sidebar">
+        <div class="carrito-header">
+            <h3>Mi Carrito</h3>
+            <button onclick="cerrarCarrito()">&times;</button>
+        </div>
+        <div class="carrito-items" id="carritoItems">
+            <!-- Los items se cargan con JavaScript -->
+        </div>
+        <div class="carrito-total">
+            <div class="total-linea">
+                <span>Subtotal:</span>
+                <span id="subtotal">$0</span>
+            </div>
+            <div class="total-linea">
+                <span>Envio:</span>
+                <span>Gratis</span>
+            </div>
+            <div class="total-linea total-final">
+                <span>Total:</span>
+                <span id="total">$0</span>
+            </div>
+            <button class="btn-comprar" onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- Overlay para el carrito -->
+    <div id="overlay" class="overlay" onclick="cerrarCarrito()"></div>
+
+    <!-- Mensaje de exito -->
+    <div id="mensajeExito" class="mensaje-exito">
+        <div class="mensaje-contenido">
+            <h3>Compra exitosa</h3>
+            <p>Tu pedido ha sido procesado correctamente</p>
+            <p>Te contactaremos pronto para coordinar la entrega</p>
+            <button onclick="cerrarMensajeExito()">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Notificacion -->
+    <div id="notificacion" class="notificacion"></div>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
