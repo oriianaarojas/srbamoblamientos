@@ -25,7 +25,7 @@
         </nav>
     </header>
 
-    <!-- Seccion de inicio -->
+    <!-- Seccion inicio -->
     <section id="inicio" class="seccion activa">
         <div class="hero">
             <h2>Muebles de calidad para tu hogar</h2>
@@ -40,19 +40,19 @@
             </div>
             <div class="caracteristica">
                 <h3>Garantia</h3>
-                <p>2 años de garantia en todos nuestros productos</p>
+                <p>2 años de garantia</p>
             </div>
             <div class="caracteristica">
                 <h3>Calidad</h3>
-                <p>Materiales de primera calidad</p>
+                <p>Materiales premium</p>
             </div>
         </div>
     </section>
 
-    <!-- Seccion de productos -->
+    <!-- Seccion productos -->
     <section id="productos" class="seccion">
         <h2>Nuestros Productos</h2>
-        
+
         <div class="filtros">
             <button class="filtro-btn activo" onclick="filtrarProductos('todos')">Todos</button>
             <button class="filtro-btn" onclick="filtrarProductos('living')">Living</button>
@@ -61,91 +61,88 @@
             <button class="filtro-btn" onclick="filtrarProductos('oficina')">Oficina</button>
         </div>
 
-        <div class="productos-grid" id="productosGrid">
-            <!-- Los productos se cargan con JavaScript -->
-        </div>
+        <div class="productos-grid" id="productosGrid"></div>
     </section>
 
-    <!-- Seccion de contacto -->
+    <!-- Seccion contacto -->
     <section id="contacto" class="seccion">
         <h2>Contacto</h2>
         <div class="contacto-container">
             <div class="info-contacto">
-                <h3>Informacion</h3>
-                <p><strong>Direccion:</strong> Av. Corrientes 1234, CABA</p>
-                <p><strong>Telefono:</strong> +54 11 4567-8900</p>
+                <h3>Información</h3>
+                <p><strong>Dirección:</strong> Av. Corrientes 1234, CABA</p>
+                <p><strong>Teléfono:</strong> +54 11 4567-8900</p>
                 <p><strong>Email:</strong> ventas@srbamoblamientos.com</p>
-                <p><strong>Horario:</strong> Lunes a Viernes 9:00 - 18:00</p>
             </div>
-            <div class="formulario-contacto">
-                <h3>Envianos un mensaje</h3>
-                <input type="text" id="nombre" placeholder="Tu nombre">
-                <input type="email" id="email" placeholder="Tu email">
-                <textarea id="mensaje" placeholder="Tu mensaje" rows="5"></textarea>
-                <button onclick="enviarMensaje()">Enviar</button>
-            </div>
+
             <div class="formulario-login">
-                <h3>Iniciar Sesion</h3>
+                <h3>Iniciar Sesión</h3>
                 <input type="email" id="loginEmail" placeholder="Email">
                 <input type="password" id="loginPassword" placeholder="Contraseña">
                 <button onclick="iniciarSesion()">Entrar</button>
-                <p class="login-texto">¿No tienes cuenta? <a href="#" onclick="alert('Registrate en nuestra tienda')">Registrate aqui</a></p>
             </div>
         </div>
     </section>
 
-    <!-- Modal de detalle de producto -->
+    <!-- Modal producto -->
     <div id="modalProducto" class="modal">
         <div class="modal-contenido">
             <span class="cerrar" onclick="cerrarModal()">&times;</span>
-            <div id="detalleProducto">
-                <!-- El detalle se carga con JavaScript -->
-            </div>
+            <div id="detalleProducto"></div>
         </div>
     </div>
 
-    <!-- Sidebar del carrito -->
+    <!-- Carrito -->
     <div id="carritoSidebar" class="carrito-sidebar">
         <div class="carrito-header">
             <h3>Mi Carrito</h3>
             <button onclick="cerrarCarrito()">&times;</button>
         </div>
-        <div class="carrito-items" id="carritoItems">
-            <!-- Los items se cargan con JavaScript -->
-        </div>
+        <div class="carrito-items" id="carritoItems"></div>
         <div class="carrito-total">
-            <div class="total-linea">
-                <span>Subtotal:</span>
-                <span id="subtotal">$0</span>
-            </div>
-            <div class="total-linea">
-                <span>Envio:</span>
-                <span>Gratis</span>
-            </div>
-            <div class="total-linea total-final">
-                <span>Total:</span>
-                <span id="total">$0</span>
-            </div>
+            <div class="total-linea"><span>Subtotal:</span><span id="subtotal">$0</span></div>
+            <div class="total-linea"><span>Envío:</span><span>Gratis</span></div>
+            <div class="total-linea total-final"><span>Total:</span><span id="total">$0</span></div>
             <button class="btn-comprar" onclick="finalizarCompra()">Finalizar Compra</button>
         </div>
     </div>
 
-    <!-- Overlay para el carrito -->
     <div id="overlay" class="overlay" onclick="cerrarCarrito()"></div>
 
-    <!-- Mensaje de exito -->
     <div id="mensajeExito" class="mensaje-exito">
         <div class="mensaje-contenido">
             <h3>Compra exitosa</h3>
             <p>Tu pedido ha sido procesado correctamente</p>
-            <p>Te contactaremos pronto para coordinar la entrega</p>
             <button onclick="cerrarMensajeExito()">Aceptar</button>
         </div>
     </div>
 
-    <!-- Notificacion -->
     <div id="notificacion" class="notificacion"></div>
 
+    <!-- 🔥 Firebase DESDE CDN -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfVU_X3hwswQs1uB8dEq4R2olBIrm89gQ",
+            authDomain: "srbamoblamientos-c60b3.firebaseapp.com",
+            projectId: "srbamoblamientos-c60b3",
+            storageBucket: "srbamoblamientos-c60b3.firebasestorage.app",
+            messagingSenderId: "491883748160",
+            appId: "1:491883748160:web:aa307efc1b906c2eadb8a5",
+            measurementId: "G-WSQ7NNDKGG"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        window.db = db;  // 👈 IMPORTANTE para usarlo en javascript.js
+    </script>
+
+    <!-- Tu JS normal -->
     <script src="javascript.js"></script>
 </body>
 </html>
